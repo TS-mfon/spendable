@@ -1,0 +1,13 @@
+{
+  "typecheck": "passed",
+  "build": "passed",
+  "unitAndIntegration": "passed",
+  "browserFlows": {
+    "passed": 11,
+    "failed": 0
+  },
+  "realMongoReplica": "passed",
+  "dependencyAudit": "0 vulnerabilities",
+  "genLayerLive": "pending owner-authorized funding/deployment",
+  "livePayments": "pending client wallet authorization"
+}

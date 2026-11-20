@@ -1,0 +1,310 @@
+{
+  "observedAt": "2026-11-20T11:15:23.063Z",
+  "checks": [
+    {
+      "name": "CMC",
+      "url": "https://pro-api.coinmarketcap.com/v3/cryptocurrency/quotes/latest?id=1,1027,3408&convert=USD,EUR,NGN",
+      "status": 200,
+      "observedAt": "2026-11-20T11:15:13.946Z",
+      "response": {
+        "status": {
+          "timestamp": "2026-11-20T11:15:14.508Z",
+          "credit_count": 3,
+          "error_code": "0"
+        },
+        "data": [
+          {
+            "id": "1",
+            "symbol": "BTC",
+            "quote": {
+              "USD": {
+                "id": 2781,
+                "symbol": "USD",
+                "price": 61755.252344372435,
+                "volume_24h": 41799691526.82455,
+                "volume_change_24h": 29.714411657338,
+                "cex_volume_24h": 41743695559.063805,
+                "dex_volume_24h": 55995967.76074004,
+                "percent_change_1h": 0.012688806397,
+                "percent_change_24h": -3.041082340661,
+                "percent_change_7d": -10.82912799623,
+                "percent_change_30d": -25.9011943367,
+                "percent_change_60d": -26.987890632138,
+                "percent_change_90d": -19.679649891657,
+                "market_cap": 1242171947434.2246,
+                "market_cap_dominance": 58.7752,
+                "fully_diluted_market_cap": 1296860299231.82,
+                "minted_market_cap": 1242171947434.22,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "EUR": {
+                "id": 2790,
+                "symbol": "EUR",
+                "price": 56342.589742145,
+                "volume_24h": 38136073963.57281,
+                "volume_change_24h": 29.714411657338,
+                "cex_volume_24h": 38084985874.39839,
+                "dex_volume_24h": 51088089.174414255,
+                "percent_change_1h": 0.012688806397,
+                "percent_change_24h": -3.041082340661,
+                "percent_change_7d": -10.82912799623,
+                "percent_change_30d": -25.9011943367,
+                "percent_change_60d": -26.987890632138,
+                "percent_change_90d": -19.679649891657,
+                "market_cap": 1133299302757.4526,
+                "market_cap_dominance": 58.7752,
+                "fully_diluted_market_cap": 1183194384585.044,
+                "minted_market_cap": 1133299302757.4485,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "NGN": {
+                "id": 2819,
+                "symbol": "NGN",
+                "price": 83709862.10516535,
+                "volume_24h": 56659899861421.07,
+                "volume_change_24h": 29.714411657338,
+                "cex_volume_24h": 56583996767161.84,
+                "dex_volume_24h": 75903094259.22025,
+                "percent_change_1h": 0.012688806397,
+                "percent_change_24h": -3.041082340661,
+                "percent_change_7d": -10.82912799623,
+                "percent_change_30d": -25.9011943367,
+                "percent_change_60d": -26.987890632138,
+                "percent_change_90d": -19.679649891657,
+                "market_cap": 1683776496463449.2,
+                "market_cap_dominance": 58.7752,
+                "fully_diluted_market_cap": 1757907104208470.5,
+                "minted_market_cap": 1683776496463443,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              }
+            }
+          },
+          {
+            "id": "1027",
+            "symbol": "ETH",
+            "quote": {
+              "USD": {
+                "id": 2781,
+                "symbol": "USD",
+                "price": 1749.0290762236707,
+                "volume_24h": 13335894803.36949,
+                "volume_change_24h": 24.169847891442,
+                "cex_volume_24h": 13114594853.655048,
+                "dex_volume_24h": 221299949.71444228,
+                "percent_change_1h": -0.062307534748,
+                "percent_change_24h": -2.921759180562,
+                "percent_change_7d": -10.354064061391,
+                "percent_change_30d": -28.907661189094,
+                "percent_change_60d": -35.705301674136,
+                "percent_change_90d": -27.409526107792,
+                "market_cap": 213794768853.04596,
+                "market_cap_dominance": 10.1117,
+                "fully_diluted_market_cap": 213794768853.05,
+                "minted_market_cap": 213794768853.05,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "EUR": {
+                "id": 2790,
+                "symbol": "EUR",
+                "price": 1595.7319247798882,
+                "volume_24h": 12167043631.538515,
+                "volume_change_24h": 24.169847891442,
+                "cex_volume_24h": 11965139958.516697,
+                "dex_volume_24h": 201903673.02181977,
+                "percent_change_1h": -0.062307534748,
+                "percent_change_24h": -2.921759180562,
+                "percent_change_7d": -10.354064061391,
+                "percent_change_30d": -28.907661189094,
+                "percent_change_60d": -35.705301674136,
+                "percent_change_90d": -27.409526107792,
+                "market_cap": 195056298747.38226,
+                "market_cap_dominance": 10.1117,
+                "fully_diluted_market_cap": 195056298747.38596,
+                "minted_market_cap": 195056298747.38596,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "NGN": {
+                "id": 2819,
+                "symbol": "NGN",
+                "price": 2370826.40310756,
+                "volume_24h": 18076938764881.918,
+                "volume_change_24h": 24.169847891442,
+                "cex_volume_24h": 17776964470045.05,
+                "dex_volume_24h": 299974294836.8684,
+                "percent_change_1h": -0.062307534748,
+                "percent_change_24h": -2.921759180562,
+                "percent_change_7d": -10.354064061391,
+                "percent_change_30d": -28.907661189094,
+                "percent_change_60d": -35.705301674136,
+                "percent_change_90d": -27.409526107792,
+                "market_cap": 289800947127455.94,
+                "market_cap_dominance": 10.1117,
+                "fully_diluted_market_cap": 289800947127461.44,
+                "minted_market_cap": 289800947127461.44,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              }
+            }
+          },
+          {
+            "id": "3408",
+            "symbol": "USDC",
+            "quote": {
+              "USD": {
+                "id": 2781,
+                "symbol": "USD",
+                "price": 0.9998414058308916,
+                "volume_24h": 15956095158.700754,
+                "volume_change_24h": 26.388931247739,
+                "cex_volume_24h": 13662681670.85509,
+                "dex_volume_24h": 2293413487.8456793,
+                "percent_change_1h": 0.001724846996,
+                "percent_change_24h": 0.002808855886,
+                "percent_change_7d": 0.003700276251,
+                "percent_change_30d": -0.005464902239,
+                "percent_change_60d": -0.005031389832,
+                "percent_change_90d": -0.021343502627,
+                "market_cap": 68439493632.88494,
+                "market_cap_dominance": 3.2364,
+                "fully_diluted_market_cap": 68439493632.88,
+                "minted_market_cap": 68439493632.88,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "EUR": {
+                "id": 2790,
+                "symbol": "EUR",
+                "price": 0.9122083061340278,
+                "volume_24h": 14557591286.326052,
+                "volume_change_24h": 26.388931247739,
+                "cex_volume_24h": 12465188610.449604,
+                "dex_volume_24h": 2092402675.8764608,
+                "percent_change_1h": 0.001724846996,
+                "percent_change_24h": 0.002808855886,
+                "percent_change_7d": 0.003700276251,
+                "percent_change_30d": -0.005464902239,
+                "percent_change_60d": -0.005031389832,
+                "percent_change_90d": -0.021343502627,
+                "market_cap": 62440977334.44322,
+                "market_cap_dominance": 3.2364,
+                "fully_diluted_market_cap": 62440977334.43872,
+                "minted_market_cap": 62440977334.43872,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              },
+              "NGN": {
+                "id": 2819,
+                "symbol": "NGN",
+                "price": 1355.2950240153234,
+                "volume_24h": 21628646548530.426,
+                "volume_change_24h": 26.388931247739,
+                "cex_volume_24h": 18519901631626.504,
+                "dex_volume_24h": 3108744916903.943,
+                "percent_change_1h": 0.001724846996,
+                "percent_change_24h": 0.002808855886,
+                "percent_change_7d": 0.003700276251,
+                "percent_change_30d": -0.005464902239,
+                "percent_change_60d": -0.005031389832,
+                "percent_change_90d": -0.021343502627,
+                "market_cap": 92770418014140.16,
+                "market_cap_dominance": 3.2364,
+                "fully_diluted_market_cap": 92770418014133.45,
+                "minted_market_cap": 92770418014133.45,
+                "tvl": null,
+                "last_updated": "2026-11-20T11:14:02.000Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ZERION",
+      "url": "https://api.zerion.io/v1/chains/",
+      "status": 200,
+      "observedAt": "2026-11-20T11:15:14.755Z",
+      "response": {
+        "chainCount": 67,
+        "sample": [
+          {
+            "id": "0g",
+            "name": "0G Mainnet"
+          },
+          {
+            "id": "abstract",
+            "name": "Abstract"
+          },
+          {
+            "id": "ape",
+            "name": "Ape Chain"
+          },
+          {
+            "id": "arbitrum",
+            "name": "Arbitrum"
+          },
+          {
+            "id": "arc",
+            "name": "Arc"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LIFI",
+      "url": "https://li.quest/v1/chains",
+      "status": 200,
+      "observedAt": "2026-11-20T11:15:15.533Z",
+      "response": {
+        "chainCount": 64,
+        "sample": [
+          {
+            "id": 1,
+            "name": "Ethereum"
+          },
+          {
+            "id": 42161,
+            "name": "Arbitrum"
+          },
+          {
+            "id": 4663,
+            "name": "Robinhood Chain"
+          },
+          {
+            "id": 8453,
+            "name": "Base"
+          },
+          {
+            "id": 1337,
+            "name": "Hyperliquid"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ADAPTER_CAPABILITIES",
+      "observedAt": "2026-11-20T11:15:22.068Z",
+      "status": 200,
+      "chainCount": 64,
+      "assetCount": 104
+    },
+    {
+      "name": "POL_IDENTITY",
+      "status": 200,
+      "cmcId": 28321,
+      "prices": [
+        {
+          "assetKey": "137:native",
+          "usd": "0.07895492772520589",
+          "observedAt": "2026-11-20T11:14:02.000Z",
+          "source": "cmc",
+          "endpoint": "/v3/cryptocurrency/quotes/latest"
+        }
+      ]
+    }
+  ]
+}

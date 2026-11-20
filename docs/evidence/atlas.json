@@ -1,0 +1,20 @@
+{
+  "observedAt": "2026-11-20T09:51:16.586Z",
+  "database": "spendable",
+  "transactionCommit": "verified",
+  "otherDatabaseAccess": "denied",
+  "roles": [
+    {
+      "role": "readWrite",
+      "db": "spendable"
+    }
+  ],
+  "collections": [
+    "spendable_executions",
+    "spendable_setup_checks",
+    "spendable_auth_challenges",
+    "spendable_oauth_records",
+    "spendable_auth_rates",
+    "spendable_auth_sessions"
+  ]
+}

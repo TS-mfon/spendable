@@ -1,0 +1,32 @@
+name: Reconcile pending actions
+on:
+  schedule:
+    - cron: '2-57/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: spendable-reconcile
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Check due actions
+        env:
+          SPENDABLE_ORIGIN: ${{ vars.SPENDABLE_ORIGIN }}
+          RECONCILE_SECRET: ${{ secrets.RECONCILE_SECRET }}
+        run: |
+          node --input-type=module <<'JS'
+          const origin = process.env.SPENDABLE_ORIGIN;
+          const secret = process.env.RECONCILE_SECRET;
+          if (!origin || !secret) throw new Error('Configure SPENDABLE_ORIGIN and RECONCILE_SECRET');
+          const url = new URL('/api/internal/reconcile', origin);
+          if (url.protocol !== 'https:') throw new Error('HTTPS origin required');
+          const response = await fetch(url, {method:'POST', headers:{'Authorization':'Bearer '+secret,'Content-Type':'application/json'}, body:JSON.stringify({limit:20}), signal:AbortSignal.timeout(50000)});
+          if (!response.ok) throw new Error('Reconciliation failed with HTTP '+response.status);
+          const result = await response.json();
+          if (!result.success) throw new Error('Reconciliation did not succeed');
+          console.log('Reconciliation batch completed');
+          JS
