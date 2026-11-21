@@ -1,13 +1,25 @@
-# Spendable release acceptance
+# Spendable MCP release acceptance
 
-Local implementation includes live CMC/Zerion/LI.FI adapters, client-owned signing, durable MongoDB Atlas reservations and authentication, MCP/OAuth, reconciliation and receipts. Synthetic fixtures are limited to tests.
+Public repository: https://github.com/TS-mfon/spendable.
+MCP endpoint: https://spendable-preview-gen-daves.vercel.app/mcp.
 
-Before submission:
-- Run typecheck, build, meaningful executable coverage (80% minimum), integration, browser tests and secret/dependency checks.
-- Verify live provider responses and Atlas commit/isolation evidence under docs/evidence.
-- Publish the repository and a public Vercel preview.
-- Configure a separate bounded GenLayer Bradbury sponsor, deploy the pinned reviewed interpreter, and prove finalized interpretation. Deployment requires explicit owner authorization.
-- Complete small owner-authorized wallet payments through the human and agent flows, demonstrating source confirmation and actual recipient delivery.
-- Record a short truthful video and prepare the required #BuildwithCMC post with the submission link. Do not label synthetic browser fixtures as live payment evidence.
+The owner changed the release to MCP-only. The UI, frontend dependencies, static application build, payment REST routes and browser OAuth endpoints are removed. Authentication uses wallet-proof bearer sessions; agents retain their own wallet signing.
 
-Known boundaries: L2 source fees and routed native delivery are disabled where proof/bounds are missing. Already-broadcast replacements remain unresolved until supported chain evidence determines the outcome; the app never automatically repays. Owner-signed release of unsubmitted commitments is an acknowledged override and cannot invalidate a transaction signed outside the app.
+## Checks
+
+- Typecheck and backend-only build, including the compiled-entry regression that loads the API in plain Node.
+- Unit/repository coverage above 80%, MCP integration and native client E2E.
+- Secret scanning and dependency audit.
+- Real CMC/Zerion/capability data and Atlas transaction/isolation evidence under docs/evidence.
+- Live MCP surface, ephemeral wallet proof, tool discovery, real capability lookup and session revocation.
+- Scheduler authentication and reconciliation.
+
+E2E payment receipts are fixture evidence. The live verifier signs only a login message and cannot broadcast a payment. A normal-sized LI.FI quote and the specific tiny-amount rejection are checked separately from funding.
+
+## Before submission
+
+- Configure a separately funded GenLayer Bradbury sponsor, deploy the pinned reviewed interpreter with owner authorization, and prove finalized interpretation.
+- Complete an owner-approved wallet payment through an MCP client, showing source confirmation and actual recipient delivery.
+- Record the MCP workflow and prepare the required #BuildwithCMC submission post.
+
+Known boundaries: L2 source fees and routed native delivery remain disabled where proof/bounds are missing. Unknown or replaced broadcasts remain reserved until supported evidence resolves them; there is no automatic repayment. Explicit owner recovery cannot invalidate a previously signed transaction.

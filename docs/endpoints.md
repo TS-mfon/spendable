@@ -21,4 +21,4 @@ CMC metadata caches for 24 hours, market prices for 60 seconds. Execution quotes
 
 The v3 CMC live response has asset arrays and conversion arrays; joins use asset.id and conversion.symbol. EVM chain IDs and CMC platform IDs are separate namespaces.
 
-Private REST resources are wallet, interpretations, plans, actions, receipts and updates. MCP exposes wallet context, interpretation/polling, payment/swap planning, preparation, submission, status, receipt and updates. OAuth PKCE tokens are owner scoped and require explicit source/fee caps for agent preparation.
+MCP exposes capabilities, wallet context, interpretation/polling, payment/swap planning, saved plans/actions, preparation, submission, status, receipts, updates and recovery. Wallet-proof bearer sessions are owner scoped and agent preparation requires explicit source/fee caps. HTTP supports authentication, resource discovery, health and reconciliation; the payment REST API and browser OAuth flow are removed.

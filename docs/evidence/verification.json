@@ -1,13 +1,26 @@
 {
   "typecheck": "passed",
-  "build": "passed",
-  "unitAndIntegration": "passed",
-  "browserFlows": {
-    "passed": 11,
+  "backendBuild": "passed",
+  "unitAndIntegration": {
+    "passed": 109,
+    "failed": 0
+  },
+  "coverage": {
+    "lines": 97.68,
+    "statements": 97.68,
+    "functions": 97.01,
+    "branches": 83.1
+  },
+  "nativeMcpE2E": {
+    "passed": 1,
     "failed": 0
   },
   "realMongoReplica": "passed",
   "dependencyAudit": "0 vulnerabilities",
+  "ui": "removed",
+  "browserOAuth": "removed",
+  "liveMcp": "pending verification of new deployment",
+  "liveRouteValidation": "passed; quotes only",
   "genLayerLive": "pending owner-authorized funding/deployment",
   "livePayments": "pending client wallet authorization"
 }

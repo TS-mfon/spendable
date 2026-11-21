@@ -3,7 +3,6 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
@@ -25,8 +24,6 @@
     "src/**/*.ts",
     "api/**/*.ts",
     "tools/**/*.ts",
-    "web/**/*.ts",
-    "web/**/*.tsx",
     "tests/**/*.ts",
     "e2e/**/*.ts"
   ],

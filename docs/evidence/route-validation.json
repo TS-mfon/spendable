@@ -1,0 +1,36 @@
+{
+  "scope": "Read-only LI.FI quote and adapter validation; no wallet transaction was signed or broadcast.",
+  "source": {
+    "symbol": "ETH",
+    "chainId": 1
+  },
+  "target": {
+    "symbol": "USDC",
+    "chainId": 8453,
+    "decimals": 6
+  },
+  "checks": [
+    {
+      "observedAt": "2026-11-21T03:27:01.777Z",
+      "requestedAmount": "0.0001",
+      "targetAmountAtoms": "100",
+      "providerToAmountAtoms": "101",
+      "httpStatus": 400,
+      "code": "LIFI_AMOUNT_TOO_SMALL",
+      "result": "The provider cannot estimate this receive amount; no arbitrary route minimum inferred."
+    },
+    {
+      "observedAt": "2026-11-21T03:27:05.593Z",
+      "requestedAmount": "50",
+      "targetAmountAtoms": "50000000",
+      "httpStatus": 200,
+      "normalized": true,
+      "minimumOutputAtoms": "50356953",
+      "sourceAmountAtoms": "31504724774338426",
+      "transactionValueAtoms": "31504724774338426",
+      "nativeValueMatchesDisclosedCosts": true,
+      "gasLimit": "302255",
+      "gasPriceWei": "340130692"
+    }
+  ]
+}

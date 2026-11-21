@@ -13,7 +13,7 @@ const intent=z.object({
  interpretationId:identifier.nullable().optional()
 }).strict();
 export function createToolServer(service:SpendableService,p:AuthPrincipal){
- const server=new McpServer({name:'spendable',version:'0.1.0'});
+ const server=new McpServer({name:'spendable',version:'0.1.0'},{instructions:'Choose the recipient token, network and amount meaning explicitly. Inspect get_capabilities and get_wallet_context, then compare plan_payment or plan_swap. Explain warnings and ineligible reasons; never silently change the amount or spending caps. Prepare only an owner-approved eligible plan with positive source and fee caps. Preparation reserves balances but never signs a payment: the client wallet signs each unsigned step before expiry and reports its hash. Keep reservations for uncertain broadcasts. Only recipient-verified receipts establish delivery. Never request a wallet private key.'});
  async function execute(scope:string,run:()=>Promise<unknown>){
   try{
    if(!p.scopes.includes(scope))throw new SpendableError('INSUFFICIENT_SCOPE','This session does not have the required permission.',403);
@@ -23,6 +23,9 @@ export function createToolServer(service:SpendableService,p:AuthPrincipal){
    return {isError:true,content:[{type:'text' as const,text:JSON.stringify({error:{code:e.code,message:e.message}})}]};
   }
  }
+ server.registerTool('get_capabilities',{description:'Read supported EVM networks and verified assets. Discovery, routing, bounded source fees and delivery verification are separate capabilities.',inputSchema:z.object({}).strict(),annotations:{readOnlyHint:true}},()=>execute('wallet:read',()=>service.getCapabilities()));
+ server.registerTool('get_plan',{description:'Read your saved funding plan, quote expiry, fees, minimum receipt, warnings and eligibility reasons before approving preparation.',inputSchema:z.object({planId:identifier}).strict(),annotations:{readOnlyHint:true}},x=>execute('wallet:read',async()=>missing(await service.getPlan(p.wallet,x.planId))));
+ server.registerTool('get_action',{description:'Read your current reserved action, signing expiry, unsigned steps and submitted hashes without requesting a wallet signature.',inputSchema:z.object({executionId:identifier}).strict(),annotations:{readOnlyHint:true}},x=>execute('wallet:read',async()=>missing(await service.getExecution(p.wallet,x.executionId))));
  server.registerTool('get_wallet_context',{description:'Discover your directly held crypto and CMC reference prices, with capability and gas warnings.',inputSchema:z.object({}).strict(),annotations:{readOnlyHint:true}},()=>execute('wallet:read',()=>service.getWalletContext(p.wallet)));
  server.registerTool('interpret_request',{description:'Queue a GenLayer interpretation of a bounded request. Poll get_interpretation; confirm fields before planning.',inputSchema:z.object({text:z.string().min(1).max(2000)}).strict()},x=>execute('plan:write',()=>service.interpretRequest(p.wallet,x.text)));
  server.registerTool('get_interpretation',{description:'Poll your asynchronous GenLayer request; accepted fields still need owner confirmation.',inputSchema:z.object({id:identifier}).strict(),annotations:{readOnlyHint:true}},x=>execute('wallet:read',async()=>missing(await service.getInterpretation(p.wallet,x.id))));

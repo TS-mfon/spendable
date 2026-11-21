@@ -23,7 +23,7 @@ export function stamp(value:unknown,now:number,maxAge=300000):string{
 export class JsonClient {
  readonly fetcher:typeof fetch;readonly now:()=>number;
  private blockedUntil=0;
- constructor(readonly provider:string,readonly base:string,readonly headers:Readonly<Record<string,string>>,config:HttpConfig={}){
+ constructor(readonly provider:string,readonly base:string,readonly headers:Readonly<Record<string,string>>,config:HttpConfig={},readonly mapHttpError?:(response:Response,path:string)=>Promise<SpendableError|null>){
   this.fetcher=config.fetch??fetch;this.now=config.now??Date.now;
  }
  async get(path:string,params:Readonly<Record<string,string>>={}):Promise<Record<string,unknown>>{
@@ -36,7 +36,10 @@ export class JsonClient {
    const retry=Number(response.headers.get('retry-after')||1);this.blockedUntil=this.now()+Math.min(Math.max(Number.isFinite(retry)?retry:60,1),3600)*1000;
    throw new SpendableError('PROVIDER_THROTTLED',`${this.provider} rate limit reached. Retry later.`,429);
   }
-  if(!response.ok)throw new SpendableError('PROVIDER_HTTP',`${this.provider} request failed (HTTP ${response.status}).`,response.status===401||response.status===403?503:502);
+  if(!response.ok){
+   const mapped=await this.mapHttpError?.(response,path);if(mapped)throw mapped;
+   throw new SpendableError('PROVIDER_HTTP',`${this.provider} request failed (HTTP ${response.status}).`,response.status===401||response.status===403?503:502);
+  }
   try{return record(await response.json());}catch(e){if(e instanceof SpendableError)throw e;throw new SpendableError('PROVIDER_SCHEMA',`${this.provider} returned invalid JSON.`,502);}
  }
 }

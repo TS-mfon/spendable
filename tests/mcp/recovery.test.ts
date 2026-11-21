@@ -22,7 +22,7 @@ test('MCP recovery exposes the owner-signed recovery contract and enforces write
  let calls=0;
  const {app,auth,session}=await setup(async(owner,id,version,signature,acknowledgeLateBroadcastRisk)=>{calls++;return {owner,id,version,signature,acknowledgeLateBroadcastRisk,state:'canceled'} as never;});
  const metadata=await rpc(app,session.token,'tools/list',{});
- assert.equal(metadata.body.result.tools.length,11);
+ assert.equal(metadata.body.result.tools.length,14);
  const tool=metadata.body.result.tools.find((x:{name:string})=>x.name==='recover_action');
  assert.ok(tool);assert.equal(tool.annotations.destructiveHint,true);
  const signature=await account.signMessage({message:'recovery adapter test'});

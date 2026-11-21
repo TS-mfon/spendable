@@ -4,10 +4,20 @@ import {SpendableError} from '../shared/errors.ts';
 import {JsonClient,record,type HttpConfig} from './http.ts';
 import {normalizeQuote} from './lifi-quote.ts';
 export interface LifiConfig extends HttpConfig{readonly lifiApiKey?:string}
+async function quoteHttpError(response:Response,path:string):Promise<SpendableError|null>{
+ if(response.status!==400||path!=='/v1/quote/toAmount')return null;
+ try{
+  const body=await response.json();
+  if(body&&typeof body==='object'&&!Array.isArray(body)&&body.code===1011&&body.message==='toAmount is too small to generate a valid fromAmount estimate'){
+   return new SpendableError('LIFI_AMOUNT_TOO_SMALL','LI.FI cannot estimate a route for this receive amount because it is too small. Try a larger receive amount and compare again; the quote will show fees before signing.',422,{providerCode:1011});
+  }
+ }catch{return null;}
+ return null;
+}
 export class LifiClient{
  readonly http:JsonClient;
  constructor(config:LifiConfig={}){
-  this.http=new JsonClient('LI.FI','https://li.quest',config.lifiApiKey?{'x-lifi-api-key':config.lifiApiKey}:{},config);
+  this.http=new JsonClient('LI.FI','https://li.quest',config.lifiApiKey?{'x-lifi-api-key':config.lifiApiKey}:{},config,quoteHttpError);
  }
  chains(){return this.http.get('/v1/chains',{chainTypes:'EVM'});}
  async tokens(chains:readonly ChainCapability[]){return record((await this.http.get('/v1/tokens',{chains:chains.map(c=>c.id).join(',')})).tokens);}

@@ -7,7 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "node --import tsx tools/dev.ts",
+    "dev": "node --watch --import tsx tools/start.ts",
     "start": "node --import tsx tools/start.ts",
     "check:secrets": "node tools/check-secrets.mjs",
     "build": "node tools/build.mjs",
@@ -16,11 +16,13 @@
     "test:coverage": "c8 --all --src src --include 'src/**/*.ts' --exclude 'src/shared/contracts.ts' --exclude 'src/shared/ports.ts' --exclude 'src/**/types.ts' --check-coverage --lines 80 --branches 80 --functions 80 --statements 80 node tools/test.mjs",
     "test:integration": "node tools/test.mjs integration",
     "test:e2e": "node tools/e2e.mjs",
-    "lint": "biome lint src web api tools tests e2e",
+    "lint": "biome lint src api tools tests e2e",
     "setup:secrets": "python3 tools/setup_secrets.py",
     "verify:live": "node --import tsx tools/verify-live.ts",
     "db:migrate": "node --import tsx tools/migrate.ts",
-    "genlayer:deploy": "node --import tsx tools/deploy-genlayer.ts"
+    "genlayer:deploy": "node --import tsx tools/deploy-genlayer.ts",
+    "mcp:auth": "node --import tsx tools/auth-wallet.ts",
+    "verify:mcp": "node --import tsx tools/verify-mcp.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/express": "2.0.2",
@@ -32,21 +34,19 @@
     "genlayer-js": "1.1.8",
     "mongodb": "7.9.1",
     "pg": "*",
-    "react": "19.3.1",
-    "react-dom": "19.3.1",
     "viem": "2.58.0",
     "zod": "4.6.7"
   },
-  "overrides": {"glob":"14.0.6","minimatch":"11.0.9"},
+  "overrides": {
+    "glob": "14.0.6",
+    "minimatch": "11.0.9"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
     "@electric-sql/pglite": "*",
-    "@playwright/test": "1.65.1",
     "@types/express": "5.0.6",
     "@types/node": "26.6.6",
     "@types/pg": "*",
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0",
     "@types/supertest": "*",
     "c8": "12.0.0",
     "esbuild": "0.28.2",
@@ -54,6 +54,6 @@
     "supertest": "*",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
-    "vite": "8.3.8"
+    "@modelcontextprotocol/client": "2.4.0"
   }
 }
